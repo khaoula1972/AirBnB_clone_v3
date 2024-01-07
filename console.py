@@ -6,7 +6,7 @@ import cmd
 import models
 from models.base_model import BaseModel
 from models.user import User
-from models import storage
+from models.__init__ import storage
 from models.review import Review
 from models.state import State
 from models.city import City

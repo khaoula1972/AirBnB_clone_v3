@@ -85,52 +85,22 @@ class FileStorage:
 
     def get(self, cls, id):
         """
-        Returns the object based on the class name and its ID, or
-        None if not found
+        Retrieve one object based on the class and its ID.
+        Returns the object or None if not found.
         """
-        if cls not in classes.values():
-            return None
-
-        all_cls = models.storage.all(cls)
-        for value in all_cls.values():
-            if (value.id == id):
-                return value
-
-        return None
+        key = "{}.{}".format(cls.__name__, id)
+        return self.all(cls).get(key, None)
 
     def count(self, cls=None):
         """
-        count the number of objects in storage. If cls is provided,
-        count objects of that class; otherwise, count all objects
+        Count the number of objects in storage.
+        If cls is provided, count objects of that class;
+        otherwise, count all objects.
         """
-        all_class = classes.values()
-
-        if not cls:
-            count = 0
-            for clas in all_class:
-                count += len(models.storage.all(clas).values())
+        cnt = 0
+        if cls is not None:
+            cnt += len(self.all(cls))
         else:
-            count = len(models.storage.all(cls).values())
-
-        return count
-
-    """
-    def get(self, cls, id):
-        Retrieve one object by class and ID
-        if cls and id:
-            key = "{}.{}".format(cls.__name__, id)
-            return self.all(cls).get(key, None)
-        return None
-
-    def count(self, cls=None):
-    
-        count the number of objects in storage. If cls is provided,
-        count objects of that class; otherwise, count all objects
-        
-        if cls:
-            return len(self.all(cls))
-        else:
-            count = 0
-            for cnt in [State, City, User, Place, Review, Amenity]:
-                count += len(self.all(cnt))
-            return count"""
+            for c in [State, City, User, Place, Review, Amenity]:
+                cnt += len(self.all(c))
+        return cnt

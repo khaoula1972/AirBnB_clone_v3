@@ -90,20 +90,22 @@ class DBStorage:
 
     def get(self, cls, id):
         """
-        retrieve an object from the file storage by class and id.
+        Retrieve one object based on the class and its ID.
+        Returns the object or None if not found.
         """
-        if cls in classes.values() and id and type(id) == str:
-            d_obj = self.all(cls)
-            for key, value in d_obj.items():
-                if key.split(".")[1] == id:
-                    return value
-        return None
+        key = "{}.{}".format(cls.__name__, id)
+        return self.all(cls).get(key, None)
 
     def count(self, cls=None):
         """
-        count the number of objects in storage matching the given class.
+        Count the number of objects in storage.
+        If cls is provided, count objects of that class;
+        otherwise, count all objects.
         """
-        data = self.all(cls)
-        if cls in classes.values():
-            data = self.all(cls)
-        return len(data)
+        cnt = 0
+        if cls is not None:
+            cnt += len(self.all(cls))
+        else:
+            for c in [State, City, User, Place, Review, Amenity]:
+                cnt += len(self.all(c))
+        return cnt
