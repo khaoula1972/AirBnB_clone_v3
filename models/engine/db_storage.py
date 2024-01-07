@@ -87,3 +87,23 @@ class DBStorage:
         se_fac = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(se_fac)
         self.__session = Session()
+
+    def get(self, cls, id):
+        """
+        retrieve an object from the file storage by class and id.
+        """
+        if cls in classes.values() and id and type(id) == str:
+            d_obj = self.all(cls)
+            for key, value in d_obj.items():
+                if key.split(".")[1] == id:
+                    return value
+        return None
+
+    def count(self, cls=None):
+        """
+        count the number of objects in storage matching the given class.
+        """
+        data = self.all(cls)
+        if cls in classes.values():
+            data = self.all(cls)
+        return len(data)
