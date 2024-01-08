@@ -15,7 +15,7 @@ Welcome to the Airbnb Clone project! This project is the first step towards buil
 
 ## Team members:
 
-	- Khaoula Nakkach and Aziz Nagwaka
+        - Khaoula Nakkach and Aziz Nagwaka
 
 Cohort : 15 SE ALX program
 
@@ -23,7 +23,7 @@ Project Duration:
 
 Start date : 4 January 2024
 End date : 9 January 2024
- 
+
 ### Project Overview
 
 The primary objective of this project is to create a command interpreter that manages Airbnb objects. This command interpreter will serve as the foundation for building the complete Airbnb clone. The work you do in this initial step will be crucial because it forms the basis for all subsequent projects, including HTML/CSS templating, database storage, API development, and front-end integration.
@@ -104,4 +104,4 @@ If you would like to contribute to the Airbnb Clone project, please follow these
 
 ## Acknowledgments:
 
-We would like to express our gratitude to the Airbnb team for their innovative concept and inspiration for this project. Thank you for the opportunity to learn and build an Airbnb Clone.
+We would like to express our gratitude to the Airbnb team for their innovative concept and inspiration for this project. Thank you for the opportunity to learn and build an Airbnb Clone
