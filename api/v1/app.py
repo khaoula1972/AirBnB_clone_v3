@@ -23,9 +23,9 @@ def teardown_engine(exception):
     storage.close()
 
 
-# Error handling
 @app.errorhandler(404)
 def not_found(error):
+    """Error handler"""
 
     response = {'error': 'Not found'}
     return jsonify(response), 404
