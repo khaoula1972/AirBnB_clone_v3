@@ -84,21 +84,3 @@ def update_state(state_id):
     else:
         abort(404)
 
-
-@app_views.errorhandler(404)
-def not_found(error):
-    """
-    Raises a 404 error.
-    """
-    response = {'error': 'Not found'}
-    return jsonify(response), 404
-
-
-@app_views.errorhandler(400)
-def bad_request(error):
-    """
-    Returns a Bad Request
-    """
-    # Return a JSON response for 400 error
-    response = {'error': 'Bad Request'}
-    return jsonify(response), 400
