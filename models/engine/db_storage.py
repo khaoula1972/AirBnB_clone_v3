@@ -87,3 +87,25 @@ class DBStorage:
         se_fac = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(se_fac)
         self.__session = Session()
+
+    def get(self, cls, id):
+        """
+        Retrieve one object based on the class and its ID.
+        Returns the object or None if not found.
+        """
+        key = "{}.{}".format(cls.__name__, id)
+        return self.all(cls).get(key, None)
+
+    def count(self, cls=None):
+        """
+        Count the number of objects in storage.
+        If cls is provided, count objects of that class;
+        otherwise, count all objects.
+        """
+        cnt = 0
+        if cls is not None:
+            cnt += len(self.all(cls))
+        else:
+            for c in [State, City, User, Place, Review, Amenity]:
+                cnt += len(self.all(c))
+        return cnt

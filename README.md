@@ -21,8 +21,8 @@ Cohort : 15 SE ALX program
 
 Project Duration:
 
-Start date : 9 October 2023
-End date : 16 October 2023
+Start date : 4 January 2024
+End date : 9 January 2024
  
 ### Project Overview
 
