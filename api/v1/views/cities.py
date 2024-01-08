@@ -93,20 +93,3 @@ def update_city(city_id):
         return jsonify(city.to_dict()), 200
     else:
         abort(404)
-
-
-@app_views.errorhandler(404)
-def not_found(error):
-    """
-    404: Not Found.
-    """
-    return jsonify({'error': 'Not found'}), 404
-
-
-@app_views.errorhandler(400)
-def bad_request(error):
-    """
-    Return Bad Request message
-    """
-    # Return a JSON response for 400 error
-    return jsonify({'error': 'Bad Request'}), 400

@@ -83,21 +83,3 @@ def update_amenity(amenity_id):
         return jsonify(amenity.to_dict()), 200
     else:
         abort(404)
-
-
-@app_views.errorhandler(404)
-def not_found(error):
-    """
-    Returns 404: Not Found
-    """
-    response = {'error': 'Not found'}
-    return jsonify(response), 404
-
-
-@app_views.errorhandler(400)
-def bad_request(error):
-    """
-    Return a JSON response for 400 error
-    """
-    response = {'error': 'Bad Request'}
-    return jsonify(response), 400
